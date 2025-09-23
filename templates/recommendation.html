@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Netflix</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles3.css') }}">
+  </head>
+  <body>
+  <nav class="navbar navbar-expand-lg" id="tager">
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+    <form action="{{ url_for('recomend') }}" method="post" name="movie_search">
+        <input class="srch" type="search" name="movie" placeholder="search movies">
+    </form>
+    <ul class="navbar-nav ms-auto">
+      <li class="nav-item"><a  href="#tb">Movies</a></li>
+      <li class="nav-item"><a  href="#">Genre</a></li>
+      <li class="nav-item"><a  href="#">Settings</a></li>
+      <li class="nav-item"><a  href="#">Account</a></li>
+    </ul>
+  </div>
+  </nav>
+  <div class="slider">
+    <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel" data-bs-interval="2000">
+<div class="carousel-indicators">
+  <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+  <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
+  <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
+</div>
+<div class="carousel-inner">
+  <div class="carousel-item active">
+  <img src="{{ url_for('static', filename='imgs/movie4.jpg') }}" class="d-block w-100" alt="...">
+  </div>
+  <div class="carousel-item">
+   <img src="{{ url_for('static', filename='imgs/movie1.jpg') }}" class="d-block w-100" alt="...">
+  </div>
+  <div class="carousel-item">
+  <img src="{{ url_for('static', filename='imgs/movie2.jpg') }}" class="d-block w-100" alt="...">
+  </div>
+</div>
+<button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+  <span id="s1"class="carousel-control-prev-icon" aria-hidden="true"></span>
+  <span class="visually-hidden">Previous</span>
+</button>
+<button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+  <span id="s2" class="carousel-control-next-icon" aria-hidden="true"></span>
+  <span class="visually-hidden">Next</span>
+</button>
+</div>
+  </div>
+    <div  id="tb" class="vit-1">
+      <div class="vit">
+          {% if recomended_movies %} <h1>Recomended Movies</h1>
+          {% else %} <h1>Movies</h1>
+          {% endif %}
+      </div>
+      <div class="vit-1-1">
+        {% if recomended_movies %}
+          {% for movie in recomended_movies %}
+            <img onclick="myfunc(this)" class="lst" src = "{{ movie[1] }}" alt="">
+          {% endfor %}
+        {% else %}
+        <img onclick="myfunc(this)" class="lst" src = "{{ url_for('static', filename='imgs/l1.png') }}" alt="">
+        <img onclick="myfunc(this)" class="lst" src = "{{ url_for('static', filename='imgs/l2.jpg') }}" alt="">
+        <img onclick="myfunc(this)" class="lst" src = "{{ url_for('static', filename='imgs/l3.jpg') }}" alt="">
+        <img onclick="myfunc(this)"  class="lst" src = "{{ url_for('static', filename='imgs/l10.jpg') }}" alt="">
+        <img onclick="myfunc(this)" class="lst" src = "{{ url_for('static', filename='imgs/l4.jpg') }}" alt="">
+        <img onclick="myfunc(this)"  class="lst" src = "{{ url_for('static', filename='imgs/l5.jpg') }}" alt="">
+        <img onclick="myfunc(this)"  class="lst" src = "{{ url_for('static', filename='imgs/l6.jpeg') }}" alt="">
+        <img onclick="myfunc(this)"  class="lst" src = "{{ url_for('static', filename='imgs/l12.jpg') }}" alt="">
+        <img onclick="myfunc(this)" class="lst" src = "{{ url_for('static', filename='imgs/l7.jpg') }}" alt="">
+        <img onclick="myfunc(this)"  class="lst" src = "{{ url_for('static', filename='imgs/l8.jpg') }}" alt="">
+        <img onclick="myfunc(this)" class="lst" src = "{{ url_for('static', filename='imgs/l9.jpg') }}" alt="">
+        <img onclick="myfunc(this)" class="lst" src = "{{ url_for('static', filename='imgs/l11.jpg') }}" alt="">
+        {% endif %}
+     </div>
+  </div>
+
+  <div class="rw">
+    <div class="rw-1">
+      <h1>Recently watched</h1>
+    </div>
+    <div class="rw-1-1">
+    <img onclick="myfunc(this)"  class="lst" src = "{{ url_for('static', filename='imgs/l5.jpg') }}" alt="">
+    <img onclick="myfunc(this)"  class="lst" src = "{{ url_for('static', filename='imgs/l6.jpeg') }}" alt="">
+    <img onclick="myfunc(this)"  class="lst" src = "{{ url_for('static', filename='imgs/l12.jpg') }}" alt="">
+    <img onclick="myfunc(this)" class="lst" src = "{{ url_for('static', filename='imgs/l2.jpg') }}" alt="">
+    <img onclick="myfunc(this)" class="lst" src = "{{ url_for('static', filename='imgs/l3.jpg') }}" alt="">
+    <img onclick="myfunc(this)"  class="lst" src = "{{ url_for('static', filename='imgs/l8.jpg') }}" alt="">
+    <img onclick="myfunc(this)" class="lst" src = "{{ url_for('static', filename='imgs/l9.jpg') }}" alt="">
+  </div>
+  </div>
+  <!-- <div class="recc">
+    <div class="recc-1">
+      <h1>recomended movies</h1>
+    </div>
+    <div class="recc-1-1">
+      <img onclick="myfunc()" class="lst" src = "{{ url_for('static', filename='imgs/l1.png') }}" alt="">
+      <img onclick="myfunc()" class="lst" src = "{{ url_for('static', filename='imgs/l2.jpg') }}" alt="">
+      <img onclick="myfunc()" class="lst" src = "{{ url_for('static', filename='imgs/l3.jpg') }}" alt="">
+      <img onclick="myfunc()"  class="lst" src = "{{ url_for('static', filename='imgs/l5.jpg') }}" alt="">
+      <img onclick="myfunc()"  class="lst" src = "{{ url_for('static', filename='imgs/l6.jpeg') }}" alt="">
+      <img onclick="myfunc()"  class="lst" src = "{{ url_for('static', filename='imgs/l12.jpg') }}" alt="">
+    </div>
+  </div> -->
+  <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+ </body>
+</html>

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Netflix</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles2.css') }}">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
+  </head>
+  <body>
+    <div class="sec1">
+    <div class="sec1-bg" ><img class="sec1-bg-o" id="img1" src="{{ url_for('static', filename='imgs/my_background_1.jpg') }}" alt="img1-1"></div>
+     <!-- <div class="sec1-bg"><img class="sec1-bg-o" id ="img1" src="my_background_1.jpg" alt="img1-1"></div> -->
+     <div class="sec1-2">
+          <div class="sec1-2-1">
+                     <div class="sec1-2-2"><h1>Sign In</h1></div>
+                     <div class="sec1-2-3">
+                       <form class="reg" action="{{ url_for('main') }}" method="post">
+                          <input class="email" type="email" name="email" value="" placeholder="Email Address">
+                          <input class="password" type="password" name="password" value="" placeholder="password">
+                          <input  type="submit" name="Sign In" value="Sign In">
+                       </form>
+                     </div>
+                     <div class="fp">
+                       <a class="fp-1" href="">forget password ?</a>
+                     </div>
+          </div>
+    </div>
+    <img class="logo-1-1" src="{{ url_for('static', filename='imgs/netflix_logo.png') }}" alt="">
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+  </body>
+</html>

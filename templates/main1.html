@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <!-- <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge"> -->
+    <title>Movie Recommender</title>
+    <!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script> -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+  </head>
+  <body>    
+    <div class="sec1">
+      <div class="sec1-bg" ><img class="sec1-bg-o" id="img1" src="{{ url_for('static', filename='imgs/my_background_1.jpg') }}" alt="img1-1"></div>
+      <div class="sec1-2" >
+        <div class="header-2" class="container-fluid">
+          <div class="header-2-4" class="container-fluid">
+            <form class='get-started' method="post" action="{{ url_for('recomend') }}">
+              <input class="email" type="text" name="movie">
+              <input class="sbt" type="submit" value="Recommend" name="search">
+            </form>
+          </div>
+        </div>
+      </div>
+    {% if gen == True %}
+      {% if movies[0][0] == 'Movie not in the list' %}
+        <h1>Movie not in the list</h1>
+      {% else %}
+        <table class="table table-striped table-bordered">
+          <thead class="thead-dark">
+            <tr>
+              <th scope="col">Movie</th>
+              <th scope="col">Link</th>
+            </tr>
+          </thead>
+          <tbody>
+          {% for i in range(n): %}
+            <tr>
+              <th scope="col">{{ movies[0][i] }}</th>
+              <th scope="col"><a href="{{ movies[1][i] }}" target="_blank">Click Here!</a></th>
+            </tr>
+          {% endfor %}
+          </tbody>
+        </table>
+      {% endif %}
+    {% endif %}
+    </div>
+    <img class="logo-1-1" src="{{ url_for('static', filename='imgs/netflix_logo.png') }}" alt="">
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+  </body>
+</html>
