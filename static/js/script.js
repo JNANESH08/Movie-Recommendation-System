@@ -8,7 +8,7 @@ function myFunction(obj)
   else if(obj.value=="English")
   {
     document.getElementById("img1").src="static/imgs/my_background_1.jpg";
-    document.title="Netflix india best TV shows and films"
+    // document.title="Netflix india best TV shows and films"
     console.log("english");
   }
 }
